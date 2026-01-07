@@ -35,3 +35,8 @@ struct MatchMarker :  View {
             .aspectRatio(1,contentMode: .fit)
     }
 }
+
+#Preview{
+    MatchMarker(matches: [.exact, .inexact, .nomatch, .nomatch])
+}
+
