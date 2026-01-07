@@ -9,16 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "tree")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack{
+            pegs(colors: [.red,.green,.yellow,.blue])
+            pegs(colors: [.blue,.yellow,.red,.green])
+            pegs(colors: [.green,.red,.blue,.yellow])
+            pegs(colors: [.yellow,.blue,.green,.red])
+        }.padding()
+    }
+    
+    func pegs(colors: Array<Color>) -> some View {
+        HStack{
+            ForEach(colors.indices, id: \.self) { index in
+                RoundedRectangle(cornerRadius: 10)
+                    .aspectRatio(1,contentMode: .fit)
+                    .foregroundStyle(colors[index])
+            }
+            MatchMarker(matches: [.exact, .inexact, .nomatch, .inexact])
         }
-        .padding()
     }
 }
+
+
 
 #Preview {
     ContentView()
 }
+	
